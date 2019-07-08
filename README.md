@@ -13,10 +13,14 @@ STEP 2: go to the directory in which the script has been saved
 
 
 STEP 3: chmod +x scriptname(with extension .sh)
+      (in this case it is)
+        chmod +x wordlist.sh
 
 
 
 
 STEP 4: ./(scriptname.sh)
+     that is,
+        ./wordlist.sh
 
 ENJOY !!!!
