@@ -20,7 +20,7 @@ echo "Enter the max number of digits/alphabets"
 read max
 echo "Do you want to enter a charset(n/y)"
 read choice1
-if [$choice1=="y"]|[$choice1=="Y"]; then
+if [ "$choice1"=="y" ] || [ "$choice1"=="Y"] ; then
    echo "Enter the charset"
    read  charset
    echo $charset  # This line is to be deleted in the final version
