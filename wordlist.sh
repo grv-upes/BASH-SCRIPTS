@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "###########################################################################################################################################"
+echo  "###########################################################################################################################################"
 sleep 0.2s
 echo "It's difficutlt to remember all the tabs of CRUNCH to make wordlists."
 sleep 0.1s
@@ -45,8 +45,60 @@ echo "2)Limit the number of repeating characters ( EXAMPLE: 2@ (this will not al
 echo "3)Set a specific pattern of @,%^ (EXAMPLE: 5000%%%%% (this will start all the results in the wordlists with 5000 and then all the character represented by % will be random [Refer to reference above])."
 echo "4)Allows the literal interpretation of @,%^ when using option 3 (read manual page of crunch for more information)." 
 
+echo "Do you wish to save the wordlist(n/y)>>> "
+read saveoption
+
+if [ "$saveoption" == "y" ] || [ "$saveoption" == "Y" ]; then
+sleep 0.1s
+
+echo "Enter the path (Example: /home/user/Desktop/wordlist.txt): "
+read path
+
 printf "\nEnter any option if you want to try them out.\n"
-echo "For now this script only allows you to enter one option."
+echo "For now this script only allows you to enter one option at a time."
+echo "Enter 0 if you want don't want to try the above options>>> "
+sleep 0.1s
+read option
+
+case $option in
+0)
+  echo "Thank you !!!"
+  sleep 0.1s
+  crunch $min $max $charset -o $path
+  ;;
+1)
+  echo "Enter the string>>> "
+  read str
+  string="-s $str"
+  crunch $min $max $charset $string -o $path
+  ;;
+2)
+  echo "Enter the limit>>> "
+  read lim
+  limit="-d $lim"
+  crunch $min $max $charset $limit -o $path
+  ;;
+3)
+  echo "Enter the pattern>>> "
+  read pat
+  pattern="-t $pat"
+  crunch $min $max $charset $pattern -o $path
+  ;;
+4)
+  echo "Enter the character you want to literate>>> "
+  read char
+  character="-l $char"
+  crunch $min $max $charset $character -o $path
+  ;;
+*) 
+  echo "Select a valid option."
+  echo "We're constantly working on the script."
+  echo "Keep looking for the updates"
+  ;;
+esac
+else
+printf "\nEnter any option if you want to try them out.\n"
+echo "For now this script only allows you to enter one option at a time."
 echo "Enter 0 if you want don't want to try the above options>>> "
 sleep 0.1s
 read option
@@ -87,6 +139,7 @@ case $option in
   echo "Keep looking for the updates"
   ;;
 esac
+fi
 
 echo "/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
 printf "\n"
@@ -94,6 +147,3 @@ echo "THANK YOU!!!"
 
 # ADD LINK TO GITHUB REPO
 # ADD LINK TO CRUNCH USAGE
-
-
-
